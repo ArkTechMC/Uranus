@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.iafenvoy.uranus.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "BlockEntityTypeMixin",
+    "ChunkStatusMixin",
+    "LivingEntityMixin",
+    "MinecraftServerMixin",
+    "PlayerInventoryMixin",
+    "ServerWorldMixin"
+  ],
+  "client": [
+    "ClientWorldMixin",
+    "SkullBlockEntityRendererMixin",
+    "SoundSystemMixin",
+    "SplashTextRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

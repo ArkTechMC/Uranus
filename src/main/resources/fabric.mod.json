@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "uranus",
+  "version": "${version}",
+  "name": "Uranus",
+  "description": "A Library contains animation engine, object helper and so on. Partly based on LLibrary and Citadel.",
+  "authors": [
+    "IAFEnvoy"
+  ],
+  "contact": {
+    "repo": "https://github.com/ArkTechMC/Uranus"
+  },
+  "license": "LGPL-3.0",
+  "icon": "logo.jpg",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.iafenvoy.uranus.Uranus"
+    ]
+  },
+  "accessWidener": "uranus.accesswidener",
+  "mixins": [
+    "uranus.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
