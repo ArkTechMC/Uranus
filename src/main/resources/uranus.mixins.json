@@ -6,12 +6,18 @@
   "mixins": [
     "BlockEntityTypeMixin",
     "ChunkStatusMixin",
+    "EntityMixin",
+    "EntityTrackerEntryMixin",
     "LivingEntityMixin",
     "MinecraftServerMixin",
+    "PlayerEntityMixin",
     "PlayerInventoryMixin",
+    "PlayerManagerMixin",
+    "ServerEntityManagerMixin",
     "ServerWorldMixin"
   ],
   "client": [
+    "ArmorFeatureRendererMixin",
     "ClientWorldMixin",
     "SkullBlockEntityRendererMixin",
     "SoundSystemMixin",

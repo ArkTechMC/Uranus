@@ -1,6 +1,6 @@
 package com.iafenvoy.uranus.server.entity.pathfinding.raycoms;
 
-import com.iafenvoy.uranus.Citadel;
+import com.iafenvoy.uranus.Uranus;
 import net.minecraft.entity.ai.pathing.Path;
 
 import java.util.concurrent.Callable;
@@ -149,12 +149,12 @@ public class PathResult<T extends Callable<Path>> {
                 if (!threadException)
                     this.pathCalculation = executorService.submit(this.job);
             } catch (NullPointerException e) {
-                Citadel.LOGGER.error("Mod tried to move an entity from non server thread", e);
+                Uranus.LOGGER.error("Mod tried to move an entity from non server thread", e);
             } catch (RuntimeException e) {
                 threadException = true;
-                Citadel.LOGGER.catching(e);
+                Uranus.LOGGER.catching(e);
             } catch (Exception e) {
-                Citadel.LOGGER.catching(e);
+                Uranus.LOGGER.catching(e);
             }
     }
 
@@ -169,7 +169,7 @@ public class PathResult<T extends Callable<Path>> {
             this.pathCalculation = null;
             this.setStatus(PathFindingStatus.CALCULATION_COMPLETE);
         } catch (InterruptedException | ExecutionException e) {
-            Citadel.LOGGER.catching(e);
+            Uranus.LOGGER.catching(e);
         }
     }
 

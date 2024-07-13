@@ -1,6 +1,6 @@
 package com.iafenvoy.uranus.mixin;
 
-import com.iafenvoy.uranus.util.render.SkullRenderRegistry;
+import com.iafenvoy.uranus.client.render.SkullRenderRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityType;
 import org.spongepowered.asm.mixin.Mixin;

@@ -22,7 +22,7 @@ import java.util.function.Function;
 @Mixin(ChunkStatus.class)
 public class ChunkStatusMixin {
     @Inject(at = @At("HEAD"), method = "runGenerationTask")
-    private void mars_fillFromNoise(Executor p_283276_, ServerWorld serverLevel, ChunkGenerator chunkGenerator, StructureTemplateManager p_281305_, ServerLightingProvider p_282570_, Function<Chunk, CompletableFuture<Either<Chunk, ChunkHolder.Unloaded>>> p_283114_, List<Chunk> p_282723_, CallbackInfoReturnable<CompletableFuture<Either<Chunk, ChunkHolder.Unloaded>>> cir) {
+    private void fillFromNoise(Executor p_283276_, ServerWorld serverLevel, ChunkGenerator chunkGenerator, StructureTemplateManager p_281305_, ServerLightingProvider p_282570_, Function<Chunk, CompletableFuture<Either<Chunk, ChunkHolder.Unloaded>>> p_283114_, List<Chunk> p_282723_, CallbackInfoReturnable<CompletableFuture<Either<Chunk, ChunkHolder.Unloaded>>> cir) {
         if (chunkGenerator.getBiomeSource() instanceof IMultiNoiseBiomeSourceAccessor multiNoiseBiomeSourceAccessor) {
             multiNoiseBiomeSourceAccessor.setLastSampledSeed(serverLevel.getSeed());
             multiNoiseBiomeSourceAccessor.setLastSampledDimension(serverLevel.getRegistryKey());

@@ -18,17 +18,17 @@ public class SplashTextRendererMixin {
     private int splashTextColor = -1;
 
     @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/math/MatrixStack;multiply(Lorg/joml/Quaternionf;)V"))
-    protected void mars_preRenderSplashText(DrawContext guiGraphics, int width, TextRenderer font, int loadProgress, CallbackInfo ci) {
+    protected void preRenderSplashText(DrawContext guiGraphics, int width, TextRenderer font, int loadProgress, CallbackInfo ci) {
         guiGraphics.getMatrices().push();
     }
 
     @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawCenteredTextWithShadow(Lnet/minecraft/client/font/TextRenderer;Ljava/lang/String;III)V", shift = At.Shift.AFTER))
-    protected void mars_postRenderSplashText(DrawContext guiGraphics, int width, TextRenderer font, int loadProgress, CallbackInfo ci) {
+    protected void postRenderSplashText(DrawContext guiGraphics, int width, TextRenderer font, int loadProgress, CallbackInfo ci) {
         guiGraphics.getMatrices().pop();
     }
 
     @ModifyConstant(method = "render", constant = @Constant(intValue = 16776960))
-    private int mars_splashTextColor(int value) {
+    private int splashTextColor(int value) {
         return this.splashTextColor == -1 ? value : this.splashTextColor;
     }
 }

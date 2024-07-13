@@ -1,9 +1,9 @@
 package com.iafenvoy.uranus.server.tick;
 
+import com.iafenvoy.uranus.ServerHelper;
+import com.iafenvoy.uranus.StaticVariables;
 import com.iafenvoy.uranus.server.tick.modifier.TickRateModifier;
-import com.iafenvoy.uranus.server.world.CitadelServerData;
-import com.iafenvoy.iceandfire.StaticVariables;
-import com.iafenvoy.iceandfire.network.ServerNetworkHelper;
+import com.iafenvoy.uranus.server.world.UranusServerData;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NbtCompound;
@@ -14,7 +14,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class ServerTickRateTracker extends TickRateTracker {
-    public static final Logger LOGGER = LogManager.getLogger("mars-server-tick");
+    public static final Logger LOGGER = LogManager.getLogger("uranus-server-tick");
 
     public final MinecraftServer server;
 
@@ -28,7 +28,7 @@ public class ServerTickRateTracker extends TickRateTracker {
     }
 
     public static ServerTickRateTracker getForServer(MinecraftServer server) {
-        return CitadelServerData.get(server).getOrCreateTickRateTracker();
+        return UranusServerData.get(server).getOrCreateTickRateTracker();
     }
 
     public static void modifyTickRate(World level, TickRateModifier modifier) {
@@ -49,6 +49,6 @@ public class ServerTickRateTracker extends TickRateTracker {
 
     @Override
     protected void sync() {
-        ServerNetworkHelper.sendToAll(StaticVariables.SYNC_CLIENT_TICK, PacketByteBufs.create().writeNbt(this.toTag()));
+        ServerHelper.sendToAll(StaticVariables.SYNC_CLIENT_TICK, PacketByteBufs.create().writeNbt(this.toTag()));
     }
 }

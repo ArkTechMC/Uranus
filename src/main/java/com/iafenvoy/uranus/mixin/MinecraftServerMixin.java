@@ -29,7 +29,7 @@ public abstract class MinecraftServerMixin implements ModifiableTickRateServer {
     }
 
     @ModifyConstant(method = "runServer()V", constant = @Constant(longValue = 50L), expect = 4)
-    private long mars_serverMsPerTick(long value) {
+    private long serverMsPerTick(long value) {
         return this.modifiedMsPerTick == -1 ? value : this.modifiedMsPerTick;
     }
 

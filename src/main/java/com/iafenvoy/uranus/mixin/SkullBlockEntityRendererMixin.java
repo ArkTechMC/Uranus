@@ -1,7 +1,7 @@
 package com.iafenvoy.uranus.mixin;
 
 import com.google.common.collect.ImmutableMap;
-import com.iafenvoy.uranus.util.render.SkullRenderRegistry;
+import com.iafenvoy.uranus.client.render.SkullRenderRegistry;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.SkullBlock;

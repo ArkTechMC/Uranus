@@ -3,10 +3,10 @@ package com.iafenvoy.uranus.server.entity.pathfinding.raycoms.pathjobs;
     All of this code is used with permission from Raycoms, one of the developers of the minecolonies project.
  */
 
-import com.iafenvoy.uranus.Citadel;
+import com.iafenvoy.uranus.Uranus;
 import com.iafenvoy.uranus.server.entity.pathfinding.raycoms.*;
-import com.iafenvoy.iceandfire.util.BlockUtil;
-import com.iafenvoy.iceandfire.util.PathUtil;
+import com.iafenvoy.uranus.util.BlockUtil;
+import com.iafenvoy.uranus.util.PathUtil;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.BlockHalf;
@@ -411,7 +411,7 @@ public abstract class AbstractPathJob implements Callable<Path> {
             return this.search();
         } catch (Exception e) {
             // Log everything, so exceptions to the pathfinding-thread show in Log
-            Citadel.LOGGER.warn("Pathfinding Exception", e);
+            Uranus.LOGGER.warn("Pathfinding Exception", e);
         }
         return null;
     }

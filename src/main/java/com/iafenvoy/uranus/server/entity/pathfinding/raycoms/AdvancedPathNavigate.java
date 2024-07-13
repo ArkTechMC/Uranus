@@ -3,13 +3,13 @@ package com.iafenvoy.uranus.server.entity.pathfinding.raycoms;
     All of this code is used with permission from Raycoms, one of the developers of the minecolonies project.
  */
 
-import com.iafenvoy.uranus.Citadel;
+import com.iafenvoy.uranus.Uranus;
 import com.iafenvoy.uranus.server.entity.pathfinding.raycoms.pathjobs.AbstractPathJob;
 import com.iafenvoy.uranus.server.entity.pathfinding.raycoms.pathjobs.PathJobMoveAwayFromLocation;
 import com.iafenvoy.uranus.server.entity.pathfinding.raycoms.pathjobs.PathJobMoveToLocation;
 import com.iafenvoy.uranus.server.entity.pathfinding.raycoms.pathjobs.PathJobRandomPos;
 import com.iafenvoy.uranus.server.world.WorldChunkUtil;
-import com.iafenvoy.iceandfire.util.BlockUtil;
+import com.iafenvoy.uranus.util.BlockUtil;
 import net.minecraft.block.LadderBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.pathing.*;
@@ -212,7 +212,7 @@ public class AdvancedPathNavigate extends AbstractAdvancedPathNavigate {
         this.walkSpeedFactor = speedFactor;
 
         if (speedFactor > MAX_SPEED_ALLOWED || speedFactor < MIN_SPEED_ALLOWED) {
-            Citadel.LOGGER.error("Tried to set a bad speed:{} for entity:{}", speedFactor, this.ourEntity, new Exception());
+            Uranus.LOGGER.error("Tried to set a bad speed:{} for entity:{}", speedFactor, this.ourEntity, new Exception());
             return null;
         }
 
@@ -409,7 +409,7 @@ public class AdvancedPathNavigate extends AbstractAdvancedPathNavigate {
     @Override
     public void setSpeed(final double speedFactor) {
         if (speedFactor > MAX_SPEED_ALLOWED || speedFactor < MIN_SPEED_ALLOWED) {
-            Citadel.LOGGER.debug("Tried to set a bad speed:{} for entity:{}", speedFactor, this.ourEntity);
+            Uranus.LOGGER.debug("Tried to set a bad speed:{} for entity:{}", speedFactor, this.ourEntity);
             return;
         }
         this.walkSpeedFactor = speedFactor;

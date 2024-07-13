@@ -1,6 +1,6 @@
 package com.iafenvoy.uranus.server.entity.collision;
 
-import com.iafenvoy.iceandfire.util.PathUtil;
+import com.iafenvoy.uranus.util.PathUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.ai.pathing.LandPathNodeMaker;

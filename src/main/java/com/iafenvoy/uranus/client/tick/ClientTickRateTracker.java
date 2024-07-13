@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ClientTickRateTracker extends TickRateTracker {
-    public static final Logger LOGGER = LogManager.getLogger("mars-client-tick");
+    public static final Logger LOGGER = LogManager.getLogger("uranus-client-tick");
     private static final Map<MinecraftClient, ClientTickRateTracker> dataMap = new HashMap<>();
     private static final float MS_PER_TICK = 50f;
     public final MinecraftClient client;

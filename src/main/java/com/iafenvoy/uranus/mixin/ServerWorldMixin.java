@@ -16,7 +16,7 @@ public class ServerWorldMixin {
     private MinecraftServer server;
 
     @ModifyConstant(method = "tickTime", constant = @Constant(longValue = 1L), expect = 2)
-    private long mars_clientSetDayTime(long timeIn) {
+    private long clientSetDayTime(long timeIn) {
         return ServerTickRateTracker.getForServer(this.server).getDayTimeIncrement(timeIn);
     }
 }

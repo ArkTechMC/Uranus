@@ -1,10 +1,12 @@
 package com.iafenvoy.uranus.mixin;
 
-import com.iafenvoy.uranus.server.entity.ICitadelDataEntity;
-import com.iafenvoy.uranus.util.item.ISwingable;
+import com.iafenvoy.uranus.event.LivingEntityEvents;
+import com.iafenvoy.uranus.server.entity.IUranusDataEntity;
+import com.iafenvoy.uranus.object.ISwingable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -19,40 +21,41 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
-public abstract class LivingEntityMixin extends Entity implements ICitadelDataEntity {
+public abstract class LivingEntityMixin extends Entity implements IUranusDataEntity {
     @Unique
-    private static final TrackedData<NbtCompound> CITADEL_DATA = DataTracker.registerData(LivingEntity.class, TrackedDataHandlerRegistry.NBT_COMPOUND);
+    private static final TrackedData<NbtCompound> URANUS_DATA = DataTracker.registerData(LivingEntity.class, TrackedDataHandlerRegistry.NBT_COMPOUND);
 
     protected LivingEntityMixin(EntityType<? extends Entity> entityType, World world) {
         super(entityType, world);
     }
 
     @Inject(at = @At("TAIL"), method = "initDataTracker")
-    private void mars_registerData(CallbackInfo ci) {
-        this.dataTracker.startTracking(CITADEL_DATA, new NbtCompound());
+    private void registerData(CallbackInfo ci) {
+        this.dataTracker.startTracking(URANUS_DATA, new NbtCompound());
     }
 
     @Inject(at = @At("TAIL"), method = "writeCustomDataToNbt")
-    private void mars_writeAdditional(NbtCompound compoundNBT, CallbackInfo ci) {
-        NbtCompound marsDat = this.getCitadelEntityData();
-        if (marsDat != null)
-            compoundNBT.put("CitadelData", marsDat);
+    private void writeAdditional(NbtCompound compoundNBT, CallbackInfo ci) {
+        NbtCompound data = this.getUranusEntityData();
+        if (data != null)
+            compoundNBT.put("UranusData", data);
     }
 
     @Inject(at = @At("TAIL"), method = "readCustomDataFromNbt")
-    private void mars_readAdditional(NbtCompound compoundNBT, CallbackInfo ci) {
-        if (compoundNBT.contains("CitadelData"))
-            this.setCitadelEntityData(compoundNBT.getCompound("CitadelData"));
+    private void readAdditional(NbtCompound compoundNBT, CallbackInfo ci) {
+        if (compoundNBT.contains("UranusData"))
+            this.setUranusEntityData(compoundNBT.getCompound("UranusData"));
     }
 
-    public NbtCompound getCitadelEntityData() {
-        return this.dataTracker.get(CITADEL_DATA);
+    public NbtCompound getUranusEntityData() {
+        return this.dataTracker.get(URANUS_DATA);
     }
 
-    public void setCitadelEntityData(NbtCompound nbt) {
-        this.dataTracker.set(CITADEL_DATA, nbt);
+    public void setUranusEntityData(NbtCompound nbt) {
+        this.dataTracker.set(URANUS_DATA, nbt);
     }
 
     @Shadow
@@ -65,5 +68,10 @@ public abstract class LivingEntityMixin extends Entity implements ICitadelDataEn
         if (item instanceof ISwingable iSwingable)
             if (iSwingable.onEntitySwing(stack, this))
                 ci.cancel();
+    }
+
+    @Inject(method = "handleFallDamage", at = @At("HEAD"))
+    public void onEntityFall(float fallDistance, float multiplier, DamageSource source, CallbackInfoReturnable<Boolean> cir) {
+        LivingEntityEvents.FALL.invoker().onFall((LivingEntity) (Object) this, fallDistance, multiplier, source);
     }
 }
