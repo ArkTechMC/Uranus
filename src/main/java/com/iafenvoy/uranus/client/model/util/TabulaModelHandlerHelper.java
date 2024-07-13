@@ -1,5 +1,8 @@
 package com.iafenvoy.uranus.client.model.util;
 
+import com.iafenvoy.uranus.Uranus;
+import com.iafenvoy.uranus.client.model.ITabulaModelAnimator;
+import com.iafenvoy.uranus.client.model.TabulaModel;
 import com.iafenvoy.uranus.client.model.TabulaModelHandler;
 import com.iafenvoy.uranus.client.model.tabula.TabulaModelContainer;
 import net.fabricmc.loader.api.FabricLoader;
@@ -11,6 +14,15 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 public class TabulaModelHandlerHelper {
+    private static TabulaModel getOrNull(String modelPath, ITabulaModelAnimator<?> tabulaAnimator) {
+        try {
+            return new TabulaModel(TabulaModelHandlerHelper.loadTabulaModel(modelPath), tabulaAnimator);
+        } catch (IOException e) {
+            Uranus.LOGGER.error(e);
+        }
+        return null;
+    }
+
     public static TabulaModelContainer loadTabulaModel(String path) throws IOException {
         if (!path.startsWith("/")) path = "/" + path;
         if (!path.endsWith(".tbl")) path = path + ".tbl";
