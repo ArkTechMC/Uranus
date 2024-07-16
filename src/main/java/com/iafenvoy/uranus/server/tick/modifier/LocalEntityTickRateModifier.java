@@ -1,6 +1,6 @@
 package com.iafenvoy.uranus.server.tick.modifier;
 
-import com.iafenvoy.uranus.server.entity.IModifiesTime;
+import com.iafenvoy.uranus.object.entity.IModifiesTime;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.nbt.NbtCompound;

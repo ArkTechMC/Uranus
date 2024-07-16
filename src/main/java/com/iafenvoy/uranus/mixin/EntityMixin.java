@@ -1,6 +1,6 @@
 package com.iafenvoy.uranus.mixin;
 
-import com.iafenvoy.uranus.object.ItemBase;
+import com.iafenvoy.uranus.object.item.ItemBase;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;

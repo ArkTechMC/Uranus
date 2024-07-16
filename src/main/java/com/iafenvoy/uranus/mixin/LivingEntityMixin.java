@@ -1,8 +1,8 @@
 package com.iafenvoy.uranus.mixin;
 
 import com.iafenvoy.uranus.event.LivingEntityEvents;
-import com.iafenvoy.uranus.server.entity.IUranusDataEntity;
-import com.iafenvoy.uranus.object.ISwingable;
+import com.iafenvoy.uranus.object.entity.IUranusDataEntity;
+import com.iafenvoy.uranus.object.item.ISwingable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
