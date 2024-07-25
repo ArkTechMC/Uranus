@@ -1,6 +1,6 @@
 package com.iafenvoy.uranus.mixin;
 
-import com.iafenvoy.uranus.object.ArmorWithTickItem;
+import com.iafenvoy.uranus.object.item.ArmorWithTickItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import org.spongepowered.asm.mixin.Final;
