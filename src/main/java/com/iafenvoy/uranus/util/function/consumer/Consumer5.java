@@ -1,4 +1,4 @@
-package com.iafenvoy.uranus.util;
+package com.iafenvoy.uranus.util.function.consumer;
 
 @FunctionalInterface
 public interface Consumer5<T1, T2, T3, T4, T5> {
