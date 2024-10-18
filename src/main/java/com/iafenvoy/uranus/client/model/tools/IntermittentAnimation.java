@@ -1,8 +1,6 @@
 package com.iafenvoy.uranus.client.model.tools;
 
 import com.iafenvoy.uranus.object.entity.IIntermittentEntity;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 
@@ -16,7 +14,6 @@ import java.util.Random;
  * @author RafaMv
  * @author Paul Fulham
  */
-@Environment(EnvType.CLIENT)
 public class IntermittentAnimation<T extends Entity & IIntermittentEntity> {
     /**
      * It is the random used to randomize the movement.

@@ -1,7 +1,5 @@
 package com.iafenvoy.uranus.client.model.tools;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.util.math.MathHelper;
 
 /**
@@ -11,7 +9,6 @@ import net.minecraft.util.math.MathHelper;
  * @author RafaMv
  * @since 1.4.0
  */
-@Environment(EnvType.CLIENT)
 public class ControlledAnimation {
     /**
      * It is the timer used to animate
